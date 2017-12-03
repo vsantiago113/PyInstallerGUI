@@ -10,6 +10,10 @@ When you run the GUI and select a file and don't change any options by default i
 
 
 
+Important: if you have directories with images, other executables or files, after you compile your code into an executable you must copy these folders back to the root of your program where the executable is. For example, if in the root of your application you have a directory named images with icons and other images when you turn your code into an executable PyInstaller does not move these automatically, so you will have to do that manually. You must copy the folder images to the root where you have your executable.
+
+
+
 The PyInstaller GUI was only tested in Windows using Python versions 2 and 3.
 
-To learn more about PyInstaller check out their documentation, PyInstaller Manual at https://pyinstaller.readthedocs.io/en/stable/.
+To learn more about Pyinstaller check out their documentation the PyInstaller Manual at https://pyinstaller.readthedocs.io/en/stable/.
