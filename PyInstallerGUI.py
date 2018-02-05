@@ -1,10 +1,23 @@
-__version__     = '1.0.0.1'
+__version__     = '1.0.0.2'
 
-import tkinter as tk
-from tkinter import ttk
-from tkinter import messagebox
-from tkinter import font
-from tkinter import filedialog
+import sys
+
+if sys.version_info.major == 3:
+    import tkinter as tk
+    from tkinter import ttk
+    from tkinter import messagebox
+    from tkinter import font
+    from tkinter import filedialog
+elif sys.version_info.major == 2:
+    import Tkinter as tk
+    import ttk
+    import tkMessageBox as messagebox
+    import tkFont as font
+    import tkFileDialog as filedialog
+else:
+    print('Python version 2 or 3 is required!')
+    sys.exit(1)
+
 import os, webbrowser
 from PIL import Image, ImageTk, ImageOps
 
