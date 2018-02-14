@@ -46,15 +46,19 @@ class MainApp:
 
         def CommandInfo(string):
             if string == 'onefile':
-                messagebox.showinfo('Info','Create a single file deployment')
+                messagebox.showinfo('Info', 'Create a single file deployment')
             elif string == 'name':
-                messagebox.showinfo('Info','Optional name to assign to the project (from which the spec file name is generated). If omitted, the basename of the (first) script is used.')
+                messagebox.showinfo('Info', 'Optional name to assign to the project (from which the spec file name is '
+                                            'generated). If omitted, the basename of the (first) script is used.')
             elif string == 'subsystem':
-                messagebox.showinfo('Info','Use a console subsystem executable (default) or use a windowed subsystem executable, which on Windows does not open the console when the program is launched')
+                messagebox.showinfo('Info', 'Use a console subsystem executable (default) or use a windowed subsystem '
+                                            'executable, which on Windows does not open the console when the program '
+                                            'is launched')
             elif string == 'noupx':
-                messagebox.showinfo('Info','Do not use UPX even if available (works differently between Windows and *nix)')
+                messagebox.showinfo('Info', 'Do not use UPX even if available (works differently between Windows and '
+                                            '*nix)')
             elif string == 'versionfile':
-                messagebox.showinfo('Info','Add a version resource from FILE to the exe')
+                messagebox.showinfo('Info', 'Add a version resource from FILE to the exe')
             elif string == 'icon':
                 messagebox.showinfo('Info','If FILE is an .ico file, add the icon to the final executable.')
 
@@ -141,66 +145,93 @@ class MainApp:
         parent.config(menu=menubar)
 
         self.logoImage = ImageTk.PhotoImage(Image.open('images/logo.png'))
-        label1 = tk.Label(parent, image=self.logoImage); label1.pack(side=tk.TOP)
+        label1 = tk.Label(parent, image=self.logoImage)
+        label1.pack(side=tk.TOP)
 
         self.ComboBoxVar1 = tk.StringVar()
         self.ComboBoxVar1.set(' --console')
-        ComboBox1 = ttk.Combobox(parent, values=[' --console',' --windowed'], textvariable=self.ComboBoxVar1, state='readonly')
+        ComboBox1 = ttk.Combobox(parent, values=[' --console',' --windowed'], textvariable=self.ComboBoxVar1,
+                                 state='readonly')
         ComboBox1.place(width=143, height=21, x=10, y=124)
         ComboBox1.bind('<<ComboboxSelected>>', BuildCommand)
 
-        button1 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('subsystem')); button1.place(width=40, height=25, x=163, y=124)
+        button1 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('subsystem'))
+        button1.place(width=40, height=25, x=163, y=124)
 
         self.CheckBoxVar1 = tk.StringVar()
         self.CheckBoxVar1.set('')
-        CheckBox1 = ttk.Checkbutton(parent, text=('--name')
-                                    ,variable=self.CheckBoxVar1, onvalue=' --name', offvalue='', command=lambda: BuildCommand('')); CheckBox1.place(width=63, height=21, x=245, y=124)
-        entry1 = ttk.Entry(parent); entry1.place(width=126, height=21, x=318, y=124)
+        CheckBox1 = ttk.Checkbutton(parent, text='--name', variable=self.CheckBoxVar1, onvalue=' --name', offvalue='',
+                                    command=lambda: BuildCommand(''))
+        CheckBox1.place(width=63, height=21, x=245, y=124)
+        entry1 = ttk.Entry(parent)
+        entry1.place(width=126, height=21, x=318, y=124)
         
-        button2 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('name')); button2.place(width=40, height=25, x=454, y=124)
+        button2 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('name'))
+        button2.place(width=40, height=25, x=454, y=124)
 
         self.CheckBoxVar2 = tk.StringVar()
         self.CheckBoxVar2.set('')
-        CheckBox2 = ttk.Checkbutton(parent, text='--onefile',
-                                 variable=self.CheckBoxVar2, onvalue=' --onefile', offvalue='', command=lambda: BuildCommand('')); CheckBox2.place(width=69, height=21, x=10, y=159)
-        button3 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('onefile')); button3.place(width=40, height=25, x=89, y=159)
+        CheckBox2 = ttk.Checkbutton(parent, text='--onefile', variable=self.CheckBoxVar2, onvalue=' --onefile',
+                                    offvalue='', command=lambda: BuildCommand(''))
+        CheckBox2.place(width=69, height=21, x=10, y=159)
+        button3 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('onefile'))
+        button3.place(width=40, height=25, x=89, y=159)
 
         self.CheckBoxVar3 = tk.StringVar()
         self.CheckBoxVar3.set(' --noupx')
-        CheckBox3 = ttk.Checkbutton(parent, text=('--noupx')
-                                    ,variable=self.CheckBoxVar3, onvalue=' --noupx', offvalue='', command=lambda: BuildCommand('')); CheckBox3.place(width=66, height=21, x=164, y=159)
+        CheckBox3 = ttk.Checkbutton(parent, text=('--noupx'), variable=self.CheckBoxVar3, onvalue=' --noupx',
+                                    offvalue='', command=lambda: BuildCommand(''))
+        CheckBox3.place(width=66, height=21, x=164, y=159)
 
-        button4 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('noupx')); button4.place(width=40, height=25, x=240, y=159)
+        button4 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('noupx'))
+        button4.place(width=40, height=25, x=240, y=159)
 
         self.CheckBoxVar4 = tk.StringVar()
         self.CheckBoxVar4.set('')
-        CheckBox4 = ttk.Checkbutton(parent, text='--version-file',
-                                 variable=self.CheckBoxVar4, onvalue=' --version-file', offvalue='', command=lambda: BuildCommand('')); CheckBox4.place(width=92, height=21, x=10, y=194)
+        CheckBox4 = ttk.Checkbutton(parent, text='--version-file', variable=self.CheckBoxVar4,
+                                    onvalue=' --version-file', offvalue='', command=lambda: BuildCommand(''))
+        CheckBox4.place(width=92, height=21, x=10, y=194)
         
-        button5 = ttk.Button(parent, text='Browse', command=lambda: GetDirectoryString('versionfile')); button5.place(width=76, height=25, x=112, y=194)
+        button5 = ttk.Button(parent, text='Browse', command=lambda: GetDirectoryString('versionfile'))
+        button5.place(width=76, height=25, x=112, y=194)
 
-        entry2 = ttk.Entry(parent); entry2.place(width=248, height=21, x=198, y=197)
+        entry2 = ttk.Entry(parent)
+        entry2.place(width=248, height=21, x=198, y=197)
 
-        button6 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('versionfile')); button6.place(width=40, height=25, x=456, y=194)
+        button6 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('versionfile'))
+        button6.place(width=40, height=25, x=456, y=194)
 
-        label2 = tk.Label(parent, text='Script', bg=COLOR); label2.place(width=36, height=21, x=10, y=229)
-        button7 = ttk.Button(parent, text='Browse', command=lambda: GetDirectoryString('script')); button7.place(width=76, height=25, x=56, y=229)
-        entry3 = ttk.Entry(parent); entry3.place(width=354, height=21, x=142, y=229)
+        label2 = tk.Label(parent, text='Script', bg=COLOR)
+        label2.place(width=36, height=21, x=10, y=229)
+        button7 = ttk.Button(parent, text='Browse', command=lambda: GetDirectoryString('script'))
+        button7.place(width=76, height=25, x=56, y=229)
+        entry3 = ttk.Entry(parent)
+        entry3.place(width=354, height=21, x=142, y=229)
 
         self.CheckBoxVar5 = tk.StringVar()
         self.CheckBoxVar5.set('')
-        CheckBox5 = ttk.Checkbutton(parent, text='--icon',
-                                 variable=self.CheckBoxVar5, onvalue=' --icon', offvalue='', command=lambda: BuildCommand('')); CheckBox5.place(width=56, height=21, x=10, y=264)
-        button8 = ttk.Button(parent, text='Browse', command=lambda: GetDirectoryString('icon')); button8.place(width=76, height=25, x=76, y=264)
-        entry4 = ttk.Entry(parent); entry4.place(width=284, height=21, x=162, y=264)
-        button9 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('icon')); button9.place(width=40, height=25, x=456, y=264)
+        CheckBox5 = ttk.Checkbutton(parent, text='--icon', variable=self.CheckBoxVar5, onvalue=' --icon',
+                                    offvalue='', command=lambda: BuildCommand(''))
+        CheckBox5.place(width=56, height=21, x=10, y=264)
+        button8 = ttk.Button(parent, text='Browse', command=lambda: GetDirectoryString('icon'))
+        button8.place(width=76, height=25, x=76, y=264)
 
-        label3 = tk.Label(parent, text='Command', bg=COLOR); label3.place(width=63, height=21, x=10, y=299)
-        entry5 = ttk.Entry(parent); entry5.place(width=363, height=21, x=83, y=299)
+        entry4 = ttk.Entry(parent)
+        entry4.place(width=284, height=21, x=162, y=264)
+
+        button9 = ttk.Button(parent, text='Info', width=5, command=lambda: CommandInfo('icon'))
+        button9.place(width=40, height=25, x=456, y=264)
+
+        label3 = tk.Label(parent, text='Command', bg=COLOR)
+        label3.place(width=63, height=21, x=10, y=299)
+        entry5 = ttk.Entry(parent)
+        entry5.place(width=363, height=21, x=83, y=299)
         BuildCommand('')
         
-        button10 = ttk.Button(parent, text='Build', command=RunBuild); button10.place(width=76, height=25, x=(506/2)-86, y=340)
-        button11 = ttk.Button(parent, text='Close', command=parent.destroy); button11.place(width=76, height=25, x=(506/2)+10, y=340)
+        button10 = ttk.Button(parent, text='Build', command=RunBuild)
+        button10.place(width=76, height=25, x=(506/2)-86, y=340)
+        button11 = ttk.Button(parent, text='Close', command=parent.destroy)
+        button11.place(width=76, height=25, x=(506/2)+10, y=340)
 
         ttk.Style().configure('TCheckbutton', background=COLOR)
 
@@ -211,7 +242,8 @@ class SetVersionFile(tk.Toplevel):
         self.transient(parent)
         self.result = None
         self.grab_set()
-        w = 506; h = 300
+        w = 506
+        h = 300
         sw = self.winfo_screenwidth()
         sh = self.winfo_screenheight()
         x = (sw - w)/2
@@ -224,14 +256,14 @@ class SetVersionFile(tk.Toplevel):
 
         def GetDirectoryString(string):
             if string == 'fileversion':
-                filename = filedialog.askopenfilename(filetypes = [('Version File', '*.txt')])
+                filename = filedialog.askopenfilename(filetypes=[('Version File', '*.txt')])
                 entry1.delete(0, tk.END)
                 if filename == '':
                     pass
                 else:
                     entry1.insert(tk.END, str(filename))
             elif string == 'executable':
-                filename = filedialog.askopenfilename(filetypes = [('Executable', '*.exe')])
+                filename = filedialog.askopenfilename(filetypes=[('Executable', '*.exe')])
                 entry2.delete(0, tk.END)
                 if filename == '':
                     pass
@@ -251,7 +283,8 @@ class SetVersionFile(tk.Toplevel):
             entry3.insert(tk.END, string)
 
         self.logoImage = ImageTk.PhotoImage(Image.open('images/logo.png'))
-        label1 = tk.Label(self, image=self.logoImage); label1.pack(side=tk.TOP)
+        label1 = tk.Label(self, image=self.logoImage)
+        label1.pack(side=tk.TOP)
 
         def SetVersion():
             os.system('pyi-set_version "'+str(entry1.get().strip())+'" "'+str(entry2.get().strip())+'"')
@@ -260,22 +293,31 @@ class SetVersionFile(tk.Toplevel):
             entry3.delete(0, tk.END)
             entry3.insert(tk.END, 'pyi-set_version')
 
-        label2 = tk.Label(self, text='File Version', bg=COLOR); label2.place(x=10, y=120)
+        label2 = tk.Label(self, text='File Version', bg=COLOR)
+        label2.place(x=10, y=120)
         button1 = ttk.Button(self, text='Browse', command=lambda: GetDirectoryString('fileversion'))
         button1.place(x=80, y=120)
-        entry1 = ttk.Entry(self); entry1.place(width=506-76-100, height=21, x=165, y=122)
+        entry1 = ttk.Entry(self)
+        entry1.place(width=506-76-100, height=21, x=165, y=122)
 
-        label3 = tk.Label(self, text='Executable', bg=COLOR); label3.place(x=10, y=155)
+        label3 = tk.Label(self, text='Executable', bg=COLOR)
+        label3.place(x=10, y=155)
         button2 = ttk.Button(self, text='Browse', command=lambda: GetDirectoryString('executable'))
         button2.place(x=80, y=155)
-        entry2 = ttk.Entry(self); entry2.place(width=330, height=21, x=165, y=157)
+        entry2 = ttk.Entry(self)
+        entry2.place(width=330, height=21, x=165, y=157)
 
-        label4 = tk.Label(self, text='Command', bg=COLOR); label4.place(x=10, y=192)
-        entry3 = ttk.Entry(self); entry3.place(width=365, height=21, x=80, y=192)
+        label4 = tk.Label(self, text='Command', bg=COLOR)
+        label4.place(x=10, y=192)
+        entry3 = ttk.Entry(self)
+        entry3.place(width=365, height=21, x=80, y=192)
         entry3.insert(tk.END, 'pyi-set_version')
 
-        button4 = ttk.Button(self, text='Set Version', command=SetVersion); button4.place(width=76, height=25, x=(506/2)-86, y=235)
-        button5 = ttk.Button(self, text='Close', command=self.destroy); button5.place(width=76, height=25, x=(506/2)+10, y=235)
+        button4 = ttk.Button(self, text='Set Version', command=SetVersion)
+        button4.place(width=76, height=25, x=(506/2)-86, y=235)
+        button5 = ttk.Button(self, text='Close', command=self.destroy)
+        button5.place(width=76, height=25, x=(506/2)+10, y=235)
+
 
 class GrabVersionFile(tk.Toplevel):
     def __init__(self, parent):
@@ -284,7 +326,8 @@ class GrabVersionFile(tk.Toplevel):
         self.transient(parent)
         self.result = None
         self.grab_set()
-        w = 506; h = 230
+        w = 506
+        h = 230
         sw = self.winfo_screenwidth()
         sh = self.winfo_screenheight()
         x = (sw - w)/2
@@ -297,7 +340,7 @@ class GrabVersionFile(tk.Toplevel):
 
         def GetDirectoryString(string):
             if string == 'executable':
-                filename = filedialog.askopenfilename(filetypes = [('Executable', '*.exe')])
+                filename = filedialog.askopenfilename(filetypes=[('Executable', '*.exe')])
                 entry1.delete(0, tk.END)
                 if filename == '':
                     pass
@@ -313,26 +356,33 @@ class GrabVersionFile(tk.Toplevel):
             entry2.insert(tk.END, string)
 
         self.logoImage = ImageTk.PhotoImage(Image.open('images/logo.png'))
-        label1 = tk.Label(self, image=self.logoImage); label1.pack(side=tk.TOP)
+        label1 = tk.Label(self, image=self.logoImage)
+        label1.pack(side=tk.TOP)
 
-        def GrabVersion():
+        def grab_version():
             string = 'pyi-grab_version "'+str(entry1.get().strip())+'"'
             os.system(string)
             entry1.delete(0, tk.END)
             entry2.delete(0, tk.END)
             entry2.insert(tk.END, 'pyi-grab_version')
 
-        label2 = tk.Label(self, text='Executable', bg=COLOR); label2.place(x=10, y=120)
+        label2 = tk.Label(self, text='Executable', bg=COLOR)
+        label2.place(x=10, y=120)
         button1 = ttk.Button(self, text='Browse', command=lambda: GetDirectoryString('executable'))
         button1.place(x=80, y=120)
-        entry1 = ttk.Entry(self); entry1.place(width=506-76-100, height=21, x=165, y=122)
+        entry1 = ttk.Entry(self)
+        entry1.place(width=506-76-100, height=21, x=165, y=122)
 
-        label3 = tk.Label(self, text='Command', bg=COLOR); label3.place(x=10, y=155)
-        entry2 = ttk.Entry(self); entry2.place(width=365, height=21, x=80, y=155)
+        label3 = tk.Label(self, text='Command', bg=COLOR)
+        label3.place(x=10, y=155)
+        entry2 = ttk.Entry(self)
+        entry2.place(width=365, height=21, x=80, y=155)
         entry2.insert(tk.END, 'pyi-grab_version')
 
-        button3 = ttk.Button(self, text='Grab Version', command=GrabVersion); button3.place(width=76, height=25, x=(506/2)-86, y=190)
-        button4 = ttk.Button(self, text='Close', command=self.destroy); button4.place(width=76, height=25, x=(506/2)+10, y=190)
+        button3 = ttk.Button(self, text='Grab Version', command=grab_version)
+        button3.place(width=76, height=25, x=(506/2)-86, y=190)
+        button4 = ttk.Button(self, text='Close', command=self.destroy)
+        button4.place(width=76, height=25, x=(506/2)+10, y=190)
 
 
 def main():
@@ -342,8 +392,9 @@ def main():
     root.title('PyInstaller GUI Version: '+str(__version__))
     root.wm_iconbitmap('images/python.ico')
     root.configure(background=COLOR)
-    CallMainApp = MainApp(root)
+    MainApp(root)
     root.mainloop()
+
 
 if __name__ == '__main__':
     main()
