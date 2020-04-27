@@ -1,0 +1,4 @@
+Pillow
+pyinstaller
+pefile
+pypiwin32
